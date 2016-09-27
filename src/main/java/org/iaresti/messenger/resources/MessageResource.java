@@ -2,6 +2,7 @@ package org.iaresti.messenger.resources;
 
 import java.util.List;
 
+import javax.inject.Singleton;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -19,6 +20,7 @@ import org.iaresti.messenger.resources.beans.MessageFilterBean;
 import org.iaresti.messenger.service.MessageService;
 
 @Path("/messages")
+@Singleton
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class MessageResource {
