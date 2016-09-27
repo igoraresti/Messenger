@@ -24,48 +24,48 @@ import org.iaresti.messenger.service.MessageService;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class MessageResource {
-	
-	MessageService messageService = new MessageService();
 
-	@GET
-	public List<Message> getMessage(@BeanParam MessageFilterBean filterBean){
-		if(filterBean.getYear() > 0)
-			return messageService.getAllMessagesForYear(filterBean.getYear());
-		return messageService.getAllMessages();
-	}
-	
-	
-	@POST
-	public Message addMessage(Message message){
-		return messageService.addMessage(message);
-	}
-	
-	@PUT
-	@Path("/{messageId}")
-	public Message updateMessage(@PathParam("messageId") long messageId,Message message){
-		message.setId(messageId);
-		return messageService.updateMessage(message);
-	}
-	
-	@DELETE
-	@Path("/{messageId}")
-	public void deleteMessage(@PathParam("messageId") long messageId,Message message){
-		messageService.removeMessage(messageId);
-	}
-	
-	
-	@GET
-	@Path("/{messageId}")
-	//Jersey realiza la conversion String a Long, no es necesario parsear
-	public Message getSingleMessage(@PathParam("messageId") long messageId){
-		return messageService.getMessage(messageId);
-	}
-	
-	//Aqui se define un subrecurso, para cualquier tipo de petición a este path trabaja la clase CommentResource
-	@Path("/{messageId}/comments")
-	public CommentResource getCommentResource(){
-		return new CommentResource();
-	}
+    MessageService messageService = new MessageService();
+
+    @GET
+    public List<Message> getMessage(@BeanParam MessageFilterBean filterBean) {
+        if (filterBean.getYear() > 0)
+            return messageService.getAllMessagesForYear(filterBean.getYear());
+        return messageService.getAllMessages();
+    }
+
+
+    @POST
+    public Message addMessage(Message message) {
+        return messageService.addMessage(message);
+    }
+
+    @PUT
+    @Path("/{messageId}")
+    public Message updateMessage(@PathParam("messageId") long messageId, Message message) {
+        message.setId(messageId);
+        return messageService.updateMessage(message);
+    }
+
+    @DELETE
+    @Path("/{messageId}")
+    public void deleteMessage(@PathParam("messageId") long messageId, Message message) {
+        messageService.removeMessage(messageId);
+    }
+
+
+    @GET
+    @Path("/{messageId}")
+    //Jersey realiza la conversion String a Long, no es necesario parsear
+    public Message getSingleMessage(@PathParam("messageId") long messageId) {
+        return messageService.getMessage(messageId);
+    }
+
+    //Aqui se define un subrecurso, para cualquier tipo de petición a este path trabaja la clase CommentResource
+    @Path("/{messageId}/comments")
+    public CommentResource getCommentResource() {
+        return new CommentResource();
+    }
 }
 
 /*
