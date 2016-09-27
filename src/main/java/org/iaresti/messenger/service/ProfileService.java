@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.iaresti.messenger.database.DatabaseClass;
+import org.iaresti.messenger.database.Database;
 import org.iaresti.messenger.model.Profile;
 
 public class ProfileService {
 	
-private Map<String, Profile> profiles = DatabaseClass.getProfiles();
+private Map<String, Profile> profiles = Database.getProfiles();
 	
 	public ProfileService(){
 		profiles.put("iaresti", new Profile(1L, "iaresti", "Igor", "Aresti")) ;

@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.iaresti.messenger.database.DatabaseClass;
+import org.iaresti.messenger.database.Database;
 import org.iaresti.messenger.model.*;
 
 public class MessageService {
 	
-	private Map<Long, Message> messages = DatabaseClass.getMessages();
+	private Map<Long, Message> messages = Database.getMessages();
 	private Map<Long,Comment> comments = new HashMap<>();
 	
 	public MessageService(){

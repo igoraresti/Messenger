@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.iaresti.messenger.model.*;
 
-public class DatabaseClass {
+public class Database {
 	
 	private static Map<Long, Message> messages = new HashMap<>();
 	private static Map<String, Profile> profiles = new HashMap<>();
