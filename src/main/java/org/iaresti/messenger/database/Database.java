@@ -20,6 +20,8 @@ public class Database {
 		comments.put("1", new Comment("1","Buena API","Moe"));
 		messages.get("1").setComments(comments);
 		messages.put("2", new Message("2", "Hola 2", "Igor"));
+		profiles.put("iaresti", new Profile("1", "iaresti", "Igor", "Aresti")) ;
+		profiles.put("aferro", new Profile("2", "aferro", "Armando", "Ferro"));
 	}
 	
 	private static class SingletonHolder { 
@@ -29,8 +31,8 @@ public class Database {
 	public static Database getInstance() {
 	    return SingletonHolder.INSTANCE;
 	}
-	
-	public ArrayList<Message> getMessages() {
+	//Acceso a Message
+	public List<Message> getMessages() {
 		return new ArrayList<Message>(messages.values());
 	}
 	
@@ -67,11 +69,37 @@ public class Database {
 	public Message removeMessage(String id){
 		return messages.remove(id);
 	}
-	
+	//Acceso a Comments
 	public List<Comment> getAllComments(String messageId){
 		return new ArrayList<Comment>(messages.get(messageId).getComments().values());
 	}
-	public Map<String, Profile> getProfiles() {
-		return profiles;
+	
+	//Acceso de Profiles
+	public List<Profile> getAllProfiles(){
+		return new ArrayList<Profile>(profiles.values());
 	}
+	
+	public Profile getProfile(String profileName){
+		return profiles.get(profileName);
+	}
+	
+	public Profile addProfile(Profile profile){
+		final String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+		profile.setId(uuid);
+		profiles.put(profile.getProfileName(), profile);
+		return profile;
+	}
+	
+	public Profile updateProfile(Profile profile){
+		if(profile.getProfileName().isEmpty()){
+			return null;
+		}
+		profiles.put(profile.getProfileName(), profile);
+		return profile;
+	}
+	
+	public Profile removeProfile(String profileName){
+		return profiles.remove(profileName);
+	}
+	
 }
