@@ -42,22 +42,21 @@ public class MessageResource {
 
     @PUT
     @Path("/{messageId}")
-    public Message updateMessage(@PathParam("messageId") long messageId, Message message) {
+    public Message updateMessage(@PathParam("messageId") String messageId, Message message) {
         message.setId(messageId);
         return messageService.updateMessage(message);
     }
 
     @DELETE
     @Path("/{messageId}")
-    public void deleteMessage(@PathParam("messageId") long messageId, Message message) {
+    public void deleteMessage(@PathParam("messageId") String messageId, Message message) {
         messageService.removeMessage(messageId);
     }
 
 
     @GET
     @Path("/{messageId}")
-    //Jersey realiza la conversion String a Long, no es necesario parsear
-    public Message getSingleMessage(@PathParam("messageId") long messageId) {
+    public Message getSingleMessage(@PathParam("messageId") String messageId) {
         return messageService.getMessage(messageId);
     }
 
@@ -68,21 +67,3 @@ public class MessageResource {
     }
 }
 
-/*
- * APUNTES REST
- * 
- * Tipos de parámetros:
- * 	-@PathParam se pone en la url con '/'
- * 	-@Queryparam se pone en la url con '?' seguido de "parametro=valor"
- * 	-@MatrixParam se pone en la url con ';' seguido de "parametro=valor"
- * 	-@HeaderParam se pone en el header de la petición HTTP
- * 	-@CookieParam se pone en las cookies de la petición HTTP
- * 	-@FormParam se utiliza para formularios de html
- * 
- * Para recursos con muchos parámetros se usará:
- * 
- * 	-@BeanParam que mapea una clase tipo Bean
- * 
- * Anotación Context:
- * 	-@context se utiliza para clases como UriInfo o HttpHeaders para acceder a datos de la url y cabecera respectivamente
-*/

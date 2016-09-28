@@ -11,17 +11,17 @@ import java.util.Objects;
 @XmlRootElement
 public class Message {
 
-    private long id;
+    private String id;
     private String message;
     private Date created;
     private String author;
-    private Map<Long, Comment> comments = new HashMap<>();
+    private Map<String, Comment> comments = new HashMap<>();
 
     public Message() {
 
     }
 
-    public Message(long id, String message, String author) {
+    public Message(String id, String message, String author) {
         super();
         this.id = id;
         this.message = message;
@@ -39,12 +39,12 @@ public class Message {
         return Objects.deepEquals(this, obj);
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(String uuid) {
+        this.id = uuid;
     }
 
     public String getMessage() {
@@ -72,11 +72,11 @@ public class Message {
     }
 
     @XmlTransient
-    public Map<Long, Comment> getComments() {
+    public Map<String, Comment> getComments() {
         return comments;
     }
 
-    public void setComments(Map<Long, Comment> comments) {
+    public void setComments(Map<String, Comment> comments) {
         this.comments = comments;
     }
 

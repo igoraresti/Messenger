@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Comment {
 	
-	private long id;
+	private String id;
 	private String message;
 	private Date created;
 	private String author;
@@ -13,15 +13,15 @@ public class Comment {
 	{
 		
 	}
-	public Comment(long id, String message, String author) {
-		this.id = id;
+	public Comment(String string, String message, String author) {
+		this.id = string;
 		this.message = message;
 		this.author = author;
 	}
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getMessage() {

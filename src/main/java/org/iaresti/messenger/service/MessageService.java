@@ -5,20 +5,21 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.iaresti.messenger.database.Database;
 import org.iaresti.messenger.model.*;
 
 public class MessageService {
 	
-	private Map<Long, Message> messages = Database.getMessages();
-	private Map<Long,Comment> comments = new HashMap<>();
+	private Map<String, Message> messages = Database.getMessages();
+	private Map<String,Comment> comments = new HashMap<>();
 	
 	public MessageService(){
-		messages.put(1L, new Message(1, "Hola 1", "Igor")) ;
-		comments.put(1L, new Comment(1,"Buena API","Moe"));
-		messages.get(1L).setComments(comments);
-		messages.put(2L, new Message(2, "Hola 2", "Igor")) ;
+		messages.put("1", new Message("1", "Hola 1", "Igor")) ;
+		comments.put("1", new Comment("1","Buena API","Moe"));
+		messages.get("1").setComments(comments);
+		messages.put("2", new Message("2", "Hola 2", "Igor")) ;
 	}
 	
 	/*
@@ -46,25 +47,26 @@ public class MessageService {
 		return messagesForYear;
 	}
 	
-	public Message getMessage(long id){
-		return messages.get(id);
+	public Message getMessage(String messageId){
+		return messages.get(messageId);
 	}
 	
 	public Message addMessage(Message message){
-		message.setId(messages.size() + 1);
-		messages.put(message.getId(), message);
+		final String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+		message.setId(uuid);
+		messages.put(uuid, message);
 		return message;
 	}
 	
 	public Message updateMessage(Message message){
-		if(message.getId() <= 0){
+		if(message.getId().isEmpty()){
 			return null;
 		}
 		messages.put(message.getId(), message);
 		return message;
 	}
 	
-	public Message removeMessage(long id){
+	public Message removeMessage(String id){
 		return messages.remove(id);
 	}
 	
