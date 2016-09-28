@@ -13,7 +13,4 @@ public class CommentService {
 	public List<Comment> getAllComments(String messageId){
 		return database.getAllComments(messageId);
 	}
-	
-	
-
 }
