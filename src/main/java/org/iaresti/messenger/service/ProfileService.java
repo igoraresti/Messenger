@@ -8,7 +8,7 @@ import org.iaresti.messenger.database.Database;
 import org.iaresti.messenger.model.Profile;
 
 public class ProfileService {
-	
+	/*
 private Map<String, Profile> profiles = Database.getProfiles();
 	
 	public ProfileService(){
@@ -42,5 +42,5 @@ private Map<String, Profile> profiles = Database.getProfiles();
 	public Profile removeProfile(String profileName){
 		return profiles.remove(profileName);
 	}
-
+*/
 }

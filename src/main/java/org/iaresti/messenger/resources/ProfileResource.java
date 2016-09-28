@@ -19,7 +19,7 @@ import org.iaresti.messenger.service.ProfileService;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ProfileResource {
-	
+	/*
 	private ProfileService profileService = new ProfileService();
 	
 	@GET
@@ -47,9 +47,9 @@ public class ProfileResource {
 	
 	@Path("/{ProfileName}")
 	@GET
-	//Jersey realiza la conversion String a Long, no es necesario parsear
 	public Profile getSingleProfile(@PathParam("ProfileName") String profileName){
 		return profileService.getProfile(profileName);
 	}
+	*/
 
 }
