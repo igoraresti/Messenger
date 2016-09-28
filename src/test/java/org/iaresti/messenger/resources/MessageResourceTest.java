@@ -13,7 +13,7 @@ public class MessageResourceTest extends IntegrationTest {
 
     @Test
     public void should_create_message() {
-        Message message = new Message("1", "hola caracola", "Paco");
+        Message message = new Message("one", "hola caracola", "Paco");
         Entity<Message> userEntity = Entity.entity(message, MediaType.APPLICATION_JSON_TYPE);
         Response response = target.path("messages").request().post(userEntity);
 

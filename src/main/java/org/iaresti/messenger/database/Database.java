@@ -21,6 +21,12 @@ public class Database {
         profiles.put("aferro", new Profile("2", "aferro", "Armando", "Ferro"));
     }
 
+    public void clearAll() {
+        messages.clear();
+        comments.clear();
+        profiles.clear();
+    }
+
     private static class SingletonHolder {
         private static final Database INSTANCE = new Database();
     }
