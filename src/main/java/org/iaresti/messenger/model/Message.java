@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 
 @XmlRootElement
 public class Message {
@@ -19,6 +20,14 @@ public class Message {
 
     public Message() {
 
+    }
+    
+    public Message(String message, String author) {
+        super();
+        this.id=UUID.randomUUID().toString().replaceAll("-", "");
+        this.message = message;
+        this.created = new Date();
+        this.author = author;
     }
 
     public Message(String id, String message, String author) {

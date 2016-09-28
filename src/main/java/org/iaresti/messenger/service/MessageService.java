@@ -14,10 +14,6 @@ public class MessageService {
 	
 	private Database database = Database.getInstance();
 	
-	public MessageService(){
-		
-	}
-	
 	public List<Message> getAllMessages(){
 		return new ArrayList<Message>(database.getMessages());
 	}
