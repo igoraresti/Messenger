@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/igoraresti/Messenger.svg?branch=master)](https://travis-ci.org/igoraresti/Messenger)
+
 # Lanzar los tests
 mvn clean install
 
