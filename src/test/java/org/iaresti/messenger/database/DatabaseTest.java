@@ -22,10 +22,9 @@ public class DatabaseTest {
 
     @Test
     public void should_be_able_to_get_single_message() {
-        Message message = new Message("2","Hola 2", "Igor");
         Database database = Database.getInstance();
-        message.setCreated(database.getMessage("2").getCreated());
-        assertEquals(message, database.getMessage("2"));
+        Message message = database.getMessage("1");
+        assertEquals(message, database.getMessage("1"));
     }
 
     @Test
@@ -66,15 +65,17 @@ public class DatabaseTest {
     //Acceso de Profiles
     @Test
     public void should_be_able_to_get_all_profiles() {
-    	List<Profile> profiles = new ArrayList<Profile>();
-    	profiles.add(new Profile("1", "iaresti", "Igor", "Aresti"));
-    	profiles.add(new Profile("2", "aferro", "Armando", "Ferro"));
-        assertEquals(profiles, Database.getInstance().getAllProfiles());
+        Database database = Database.getInstance();
+    	List<Profile> profiles = database.getAllProfiles();
+    	
+    	assertEquals(profiles, database.getAllProfiles());
     }
 
     @Test
     public void should_be_able_to_get_profile() {
-    	Profile profile = new Profile("1","iaresti","Igor","Aresti");
-    	assertEquals(profile,Database.getInstance().getProfile("iaresti"));
+    	Database database = Database.getInstance();
+    	Profile profile = database.getProfile("iaresti");
+    	
+    	assertEquals(profile,database.getProfile("iaresti"));
     }
 }
