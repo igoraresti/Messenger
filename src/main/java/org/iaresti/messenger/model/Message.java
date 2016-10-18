@@ -1,6 +1,5 @@
 package org.iaresti.messenger.model;
 
-import javax.ws.rs.client.Entity;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
@@ -24,7 +23,7 @@ public class Message {
     
     public Message(String message, String author) {
         super();
-        this.id=UUID.randomUUID().toString().replaceAll("-", "");
+        this.id=UUID.randomUUID().toString();
         this.message = message;
         this.created = new Date();
         this.author = author;

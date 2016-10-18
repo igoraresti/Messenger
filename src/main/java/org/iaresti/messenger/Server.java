@@ -21,7 +21,7 @@ public class Server {
     public static void main(String[] args) throws IOException {
         HttpServer server = startServer();
 
-        System.out.println(String.format("Servidor UP !! %s\n Pulsa enter para parar...", BASE_URI));
+        System.out.println(String.format("Server UP !! %s\n Type enter to switch off...", BASE_URI));
         System.in.read();
         server.shutdownNow();
     }

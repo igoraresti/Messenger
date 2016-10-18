@@ -2,12 +2,16 @@ package org.iaresti.messenger.database;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.hamcrest.core.Is;
 import org.iaresti.messenger.model.Message;
+import org.iaresti.messenger.model.Profile;
 import org.junit.After;
 import org.junit.Test;
+import org.junit.internal.builders.IgnoredBuilder;
 
 public class DatabaseTest {
 
@@ -18,8 +22,10 @@ public class DatabaseTest {
 
     @Test
     public void should_be_able_to_get_single_message() {
-        Message messageDatabase = Database.getInstance().getMessage("1");
-        assertEquals("Hola 1", messageDatabase.getMessage());
+        Message message = new Message("2","Hola 2", "Igor");
+        Database database = Database.getInstance();
+        message.setCreated(database.getMessage("2").getCreated());
+        assertEquals(message, database.getMessage("2"));
     }
 
     @Test
@@ -47,7 +53,7 @@ public class DatabaseTest {
         assertEquals(null, database.getMessage("-1"));
         Message message = new Message("1", "Adios 1", "Igor");
         database.updateMessage(message);
-        assertEquals("Adios 1", database.getMessage("1").getMessage());
+        assertEquals(message, database.getMessage("1"));
     }
 
     @Test
@@ -57,4 +63,18 @@ public class DatabaseTest {
         assertEquals(null, database.getMessage("1"));
     }
 
+    //Acceso de Profiles
+    @Test
+    public void should_be_able_to_get_all_profiles() {
+    	List<Profile> profiles = new ArrayList<Profile>();
+    	profiles.add(new Profile("1", "iaresti", "Igor", "Aresti"));
+    	profiles.add(new Profile("2", "aferro", "Armando", "Ferro"));
+        assertEquals(profiles, Database.getInstance().getAllProfiles());
+    }
+
+    @Test
+    public void should_be_able_to_get_profile() {
+    	Profile profile = new Profile("1","iaresti","Igor","Aresti");
+    	assertEquals(profile,Database.getInstance().getProfile("iaresti"));
+    }
 }

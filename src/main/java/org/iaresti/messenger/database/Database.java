@@ -13,10 +13,13 @@ public class Database {
     private static Map<String, Comment> comments = new HashMap<>();
 
     private Database() {
-        messages.put("1", new Message("1", "Hola 1", "Igor"));
-        comments.put("1", new Comment("1", "Buena API", "Moe"));
+        messages.put("1", new Message("1", "Hello 1", "Igor"));
+        comments.put("1", new Comment("1", "Nice API", "Moe"));
         messages.get("1").setComments(comments);
-        messages.put("2", new Message("2", "Hola 2", "Igor"));
+        
+        messages.put("2", new Message("2", "Hello 2", "Igor"));
+        comments.put("2", new Comment("2", "Awesome API", "Moe"));
+        
         profiles.put("iaresti", new Profile("1", "iaresti", "Igor", "Aresti"));
         profiles.put("aferro", new Profile("2", "aferro", "Armando", "Ferro"));
     }
@@ -35,7 +38,7 @@ public class Database {
         return SingletonHolder.INSTANCE;
     }
 
-    //Acceso a Message
+    //Message Access
     public List<Message> getMessages() {
         return new ArrayList<Message>(messages.values());
     }
@@ -74,12 +77,12 @@ public class Database {
         return messages.remove(id);
     }
 
-    //Acceso a Comments
+    //Comments Access
     public List<Comment> getAllComments(String messageId) {
         return new ArrayList<Comment>(messages.get(messageId).getComments().values());
     }
 
-    //Acceso de Profiles
+    //Profiles Access
     public List<Profile> getAllProfiles() {
         return new ArrayList<Profile>(profiles.values());
     }
@@ -89,7 +92,7 @@ public class Database {
     }
 
     public Profile addProfile(Profile profile) {
-        final String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+        final String uuid = UUID.randomUUID().toString();
         profile.setId(uuid);
         profiles.put(profile.getProfileName(), profile);
         return profile;

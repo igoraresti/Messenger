@@ -13,8 +13,8 @@ public class Comment {
 	{
 		
 	}
-	public Comment(String string, String message, String author) {
-		this.id = string;
+	public Comment(String id, String message, String author) {
+		this.id = id;
 		this.message = message;
 		this.author = author;
 	}
